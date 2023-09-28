@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace BTVN_1
 {
-    public class VBButton : Button
+    public class CSbutton : Button
     {
         //Fields
         private int borderSize = 0;
@@ -65,7 +65,7 @@ namespace BTVN_1
         }
 
         //Constructor
-        public VBButton()
+        public CSbutton()
         {
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;

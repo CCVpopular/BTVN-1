@@ -28,7 +28,7 @@ namespace BTVN_1
             int Buindex = 0;
             foreach (var item in table)
             {
-                VBButton button = Controls.Find("vbButton" + (Buindex + 1), true)[0] as VBButton;
+                CSbutton button = Controls.Find("vbButton" + (Buindex + 1), true)[0] as CSbutton;
                 if (button != null)
                 {
                     button.Text = item.TenGhe;
@@ -60,7 +60,7 @@ namespace BTVN_1
 
         private void vbButton1_Click(object sender, EventArgs e)
         {
-            VBButton Cbutton = (VBButton)sender;
+            CSbutton Cbutton = (CSbutton)sender;
             context = new ghengoiEntities1();
             var table = context.Table_1.ToList();
             foreach (var item in table)
