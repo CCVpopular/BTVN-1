@@ -15,7 +15,7 @@ namespace BTVN_1
 {
     public partial class Form1 : Form
     {
-        private ghengoiEntities1 context;
+        private ghengoiEntities1 context= new ghengoiEntities1 ();
         public Form1()
         {
             InitializeComponent();
@@ -23,44 +23,66 @@ namespace BTVN_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            context = new ghengoiEntities1();
-            var table = context.Table_1.ToList();
-            int Buindex = 0;
-            foreach (var item in table)
+            var table = context.Table_1.ToList ();
+            int dorong = 40;
+            int docao = 40;
+            int sohang = 10;
+            int socot = 13;
+            int dem = 0;
+            for (int row = 0; row < sohang; row++)
             {
-                CSbutton button = Controls.Find("vbButton" + (Buindex + 1), true)[0] as CSbutton;
-                if (button != null)
+                for (int col = 0; col < socot; col++)
                 {
-                    button.Text = item.TenGhe;
-                    Buindex++;
-                }
-                if (item.TrangThai == 1)
-                {
-                    if (button.Text == item.TenGhe)
+                    Button button = new Button();
+                    button.Width = dorong;
+                    button.Height = docao;
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.FlatAppearance.BorderSize = 2;
+                    if (table[dem].LoaiGhe != "S")
+                    {
+                        button.Location = new Point(800 - (col * (dorong + 5)), 75 + row * (docao + 5));
+                    }
+                    else
+                    {
+                        socot = 15;
+                        button.Location = new Point(845 - (col * (dorong + 5)), 75 + row * (docao + 5));
+                        button.FlatAppearance.BorderColor = Color.DeepPink;                    
+                    }
+                    button.Text = $"{table[dem].TenGhe}";
+                    if (table[dem].LoaiGhe == "T")
+                    {
+                        button.FlatAppearance.BorderColor = Color.LightGreen;
+                        button.BackColor = Color.DeepPink;
+                    }
+                    if (table[dem].LoaiGhe == "V")
+                    {
+                        button.FlatAppearance.BorderColor = Color.LightCoral;
+                    }
+                    if (table[dem].TrangThai == 1)
                     {
                         button.BackColor = Color.Gray;
                     }
-                }
-                else
-                {
-                    if (button.Text == item.TenGhe)
+                    else
                     {
-                        if(item.LoaiGhe == "S")
+                        if (table[dem].LoaiGhe == "S")
                         {
-                            button.BackColor = Color.Coral;
+                            button.BackColor= Color.DeepPink;
                         }
                         else
                         {
                             button.BackColor = Color.White;
                         }
                     }
-                }                
+                    button.Click += Button1_Click;
+                    dem++;
+                    this.Controls.Add(button);
+                    
+                }
             }
         }
-
-        private void vbButton1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            CSbutton Cbutton = (CSbutton)sender;
+            Button Cbutton = (Button)sender;
             context = new ghengoiEntities1();
             var table = context.Table_1.ToList();
             foreach (var item in table)
@@ -79,7 +101,7 @@ namespace BTVN_1
                     {
                         if(item.LoaiGhe == "S")
                         {
-                            Cbutton.BackColor = Color.Coral; 
+                            Cbutton.BackColor = Color.DeepPink; 
                         }
                         else
                         {
