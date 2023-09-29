@@ -1,21 +1,20 @@
 ﻿using BTVN_1.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BTVN_1
 {
     public partial class Form1 : Form
     {
-        private ghengoiEntities1 context= new ghengoiEntities1 ();
+        private ghengoiEntities1 context = new ghengoiEntities1();
+        private int ButtonWidth = 40;
+        private int ButtonHeight = 40;
+        private int Rows = 10;
+        private int Columns = 13;
+        private double totalPrice = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -23,95 +22,81 @@ namespace BTVN_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var table = context.Table_1.ToList ();
-            int dorong = 40;
-            int docao = 40;
-            int sohang = 10;
-            int socot = 13;
+            var table = context.Table_1.ToList();
+            int rowSpacing = 5;
+            int columnSpacing = 5;
             int dem = 0;
-            for (int row = 0; row < sohang; row++)
+
+            for (int row = 0; row < Rows; row++)
             {
-                for (int col = 0; col < socot; col++)
+                for (int col = 0; col < Columns; col++)
                 {
                     Button button = new Button();
-                    button.Width = dorong;
-                    button.Height = docao;
+                    button.Width = ButtonWidth;
+                    button.Height = ButtonHeight;
                     button.FlatStyle = FlatStyle.Flat;
                     button.FlatAppearance.BorderSize = 2;
-                    if (table[dem].LoaiGhe != "S")
+
+                    int x = 700 - (col * (ButtonWidth + columnSpacing));
+                    int y = 75 + row * (ButtonHeight + rowSpacing);
+
+                    if (table[dem].LoaiGhe == "S")
                     {
-                        button.Location = new Point(800 - (col * (dorong + 5)), 75 + row * (docao + 5));
+                        Columns = 15;
+                        x = 745 - (col * (ButtonWidth + columnSpacing));
+                        button.FlatAppearance.BorderColor = Color.DeepPink;
                     }
-                    else
-                    {
-                        socot = 15;
-                        button.Location = new Point(845 - (col * (dorong + 5)), 75 + row * (docao + 5));
-                        button.FlatAppearance.BorderColor = Color.DeepPink;                    
-                    }
-                    button.Text = $"{table[dem].TenGhe}";
+
+                    button.Location = new Point(x, y);
+                    button.Text = table[dem].TenGhe;
+
                     if (table[dem].LoaiGhe == "T")
                     {
                         button.FlatAppearance.BorderColor = Color.LightGreen;
-                        button.BackColor = Color.DeepPink;
                     }
-                    if (table[dem].LoaiGhe == "V")
+                    else if (table[dem].LoaiGhe == "V")
                     {
                         button.FlatAppearance.BorderColor = Color.LightCoral;
                     }
-                    if (table[dem].TrangThai == 1)
-                    {
-                        button.BackColor = Color.Gray;
-                    }
-                    else
-                    {
-                        if (table[dem].LoaiGhe == "S")
-                        {
-                            button.BackColor= Color.DeepPink;
-                        }
-                        else
-                        {
-                            button.BackColor = Color.White;
-                        }
-                    }
+
+                    button.BackColor = table[dem].TrangThai == 1 ? Color.Red : (table[dem].LoaiGhe == "S" ? Color.DeepPink : Color.White);
                     button.Click += Button1_Click;
                     dem++;
                     this.Controls.Add(button);
-                    
                 }
             }
         }
+
         private void Button1_Click(object sender, EventArgs e)
         {
-            Button Cbutton = (Button)sender;
-            context = new ghengoiEntities1();
+            Button clickedButton = (Button)sender;
             var table = context.Table_1.ToList();
-            foreach (var item in table)
+            var table2 = context.Table_2.ToList();
+
+            for (int i = 0; i < table.Count; i++)
             {
-                if (item.TrangThai == null)
-                {                    
-                    if (Cbutton.Text == item.TenGhe)
+                if (clickedButton.Text == table[i].TenGhe)
+                {
+                    if (clickedButton.BackColor == Color.Red)
                     {
-                        Cbutton.BackColor = Color.Gray;
-                        item.TrangThai = 1;
-                    }                    
-                }
-                else 
-                {         
-                    if (Cbutton.Text == item.TenGhe)
+                        clickedButton.BackColor = table[i].LoaiGhe == "S" ? Color.DeepPink : Color.White;
+                        totalPrice -= table[i].LoaiGhe == "S" ? table2[2].DonGia : (table[i].LoaiGhe == "T" ? table2[0].DonGia : table2[1].DonGia);
+                    }
+                    else
                     {
-                        if(item.LoaiGhe == "S")
-                        {
-                            Cbutton.BackColor = Color.DeepPink; 
-                        }
-                        else
-                        {
-                            Cbutton.BackColor = Color.White;
-                        }
-                        item.TrangThai = null;
-                    }                   
+                        clickedButton.BackColor = Color.Red;
+                        totalPrice += table[i].LoaiGhe == "S" ? table2[2].DonGia : (table[i].LoaiGhe == "T" ? table2[0].DonGia : table2[1].DonGia);
+                    }
                 }
             }
-            context.SaveChanges();
+
+            textBoxthanhtien.Text = totalPrice.ToString();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
         }
     }
 }

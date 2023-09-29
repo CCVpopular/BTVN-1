@@ -4,8 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1ef2ce3e2f5a4146af6556ad2aefed2d" Name="Diagram1">
+      <Diagram DiagramId="5886ef87d39842ca80fd3d8da91c1a74" Name="Diagram1">
         <EntityTypeShape EntityType="ghengoiModel.Table_1" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ghengoiModel.Table_2" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ghengoiModel.Table_3" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

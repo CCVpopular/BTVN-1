@@ -14,8 +14,43 @@
           <Property Name="LoaiGhe" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="TrangThai" Type="tinyint" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ghengoi.dbo.Table_2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Table_2">
+          <Key>
+            <PropertyRef Name="LoaiGhe" />
+            <PropertyRef Name="DonGia" />
+          </Key>
+          <Property Name="LoaiGhe" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DonGia" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ghengoi.dbo.Table_3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Table_3">
+          <Key>
+            <PropertyRef Name="TenKhachHang" />
+            <PropertyRef Name="GheDaDat" />
+            <PropertyRef Name="ThanhTien" />
+          </Key>
+          <Property Name="TenKhachHang" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GheDaDat" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="ThanhTien" Type="float" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="ghengoiModelStoreContainer">
           <EntitySet Name="Table_1" EntityType="Self.Table_1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_2" EntityType="Self.Table_2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_2].[LoaiGhe] AS [LoaiGhe], 
+    [Table_2].[DonGia] AS [DonGia]
+    FROM [dbo].[Table_2] AS [Table_2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Table_3" EntityType="Self.Table_3" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_3].[TenKhachHang] AS [TenKhachHang], 
+    [Table_3].[GheDaDat] AS [GheDaDat], 
+    [Table_3].[ThanhTien] AS [ThanhTien]
+    FROM [dbo].[Table_3] AS [Table_3]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -31,8 +66,28 @@
           <Property Name="LoaiGhe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TrangThai" Type="Byte" />
         </EntityType>
+        <EntityType Name="Table_2">
+          <Key>
+            <PropertyRef Name="LoaiGhe" />
+            <PropertyRef Name="DonGia" />
+          </Key>
+          <Property Name="LoaiGhe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DonGia" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_3">
+          <Key>
+            <PropertyRef Name="TenKhachHang" />
+            <PropertyRef Name="GheDaDat" />
+            <PropertyRef Name="ThanhTien" />
+          </Key>
+          <Property Name="TenKhachHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GheDaDat" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ThanhTien" Type="Double" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="ghengoiEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Table_1" EntityType="Self.Table_1" />
+          <EntitySet Name="Table_2" EntityType="Self.Table_2" />
+          <EntitySet Name="Table_3" EntityType="Self.Table_3" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -47,6 +102,23 @@
                 <ScalarProperty Name="TenGhe" ColumnName="TenGhe" />
                 <ScalarProperty Name="LoaiGhe" ColumnName="LoaiGhe" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_2">
+            <EntityTypeMapping TypeName="ghengoiModel.Table_2">
+              <MappingFragment StoreEntitySet="Table_2">
+                <ScalarProperty Name="LoaiGhe" ColumnName="LoaiGhe" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_3">
+            <EntityTypeMapping TypeName="ghengoiModel.Table_3">
+              <MappingFragment StoreEntitySet="Table_3">
+                <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+                <ScalarProperty Name="GheDaDat" ColumnName="GheDaDat" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
