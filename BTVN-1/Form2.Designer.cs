@@ -28,45 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewkhachhang = new System.Windows.Forms.DataGridView();
             this.textBoxtenkhach = new System.Windows.Forms.TextBox();
             this.textBoxghedadat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonthem = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewkhachhang)).BeginInit();
+            this.textBoxthanhtien = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // dataGridViewkhachhang
-            // 
-            this.dataGridViewkhachhang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewkhachhang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewkhachhang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column3,
-            this.Column2});
-            this.dataGridViewkhachhang.Location = new System.Drawing.Point(12, 190);
-            this.dataGridViewkhachhang.Name = "dataGridViewkhachhang";
-            this.dataGridViewkhachhang.RowHeadersWidth = 51;
-            this.dataGridViewkhachhang.RowTemplate.Height = 24;
-            this.dataGridViewkhachhang.Size = new System.Drawing.Size(957, 523);
-            this.dataGridViewkhachhang.TabIndex = 0;
             // 
             // textBoxtenkhach
             // 
-            this.textBoxtenkhach.Location = new System.Drawing.Point(125, 24);
+            this.textBoxtenkhach.Location = new System.Drawing.Point(148, 24);
             this.textBoxtenkhach.Name = "textBoxtenkhach";
             this.textBoxtenkhach.Size = new System.Drawing.Size(404, 22);
             this.textBoxtenkhach.TabIndex = 1;
             // 
             // textBoxghedadat
             // 
-            this.textBoxghedadat.Location = new System.Drawing.Point(125, 75);
+            this.textBoxghedadat.Enabled = false;
+            this.textBoxghedadat.Location = new System.Drawing.Point(148, 57);
             this.textBoxghedadat.Name = "textBoxghedadat";
-            this.textBoxghedadat.Size = new System.Drawing.Size(844, 22);
+            this.textBoxghedadat.Size = new System.Drawing.Size(497, 22);
             this.textBoxghedadat.TabIndex = 3;
             // 
             // label1
@@ -81,7 +64,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 78);
+            this.label3.Location = new System.Drawing.Point(12, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 16);
             this.label3.TabIndex = 6;
@@ -90,61 +73,58 @@
             // buttonthem
             // 
             this.buttonthem.FlatAppearance.BorderSize = 2;
-            this.buttonthem.Location = new System.Drawing.Point(125, 131);
+            this.buttonthem.Location = new System.Drawing.Point(148, 131);
             this.buttonthem.Name = "buttonthem";
             this.buttonthem.Size = new System.Drawing.Size(104, 39);
             this.buttonthem.TabIndex = 7;
             this.buttonthem.Text = "Thêm";
             this.buttonthem.UseVisualStyleBackColor = true;
+            this.buttonthem.Click += new System.EventHandler(this.buttonthem_Click);
             // 
-            // Column1
+            // textBoxthanhtien
             // 
-            this.Column1.HeaderText = "Tên Khách Hàng";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
+            this.textBoxthanhtien.Enabled = false;
+            this.textBoxthanhtien.Location = new System.Drawing.Point(148, 90);
+            this.textBoxthanhtien.Name = "textBoxthanhtien";
+            this.textBoxthanhtien.Size = new System.Drawing.Size(155, 22);
+            this.textBoxthanhtien.TabIndex = 8;
             // 
-            // Column3
+            // label2
             // 
-            this.Column3.HeaderText = "Ghế Đã Đặt";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 50F;
-            this.Column2.HeaderText = "Thành Tiền";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Thành Tiền";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 725);
+            this.ClientSize = new System.Drawing.Size(673, 179);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxthanhtien);
             this.Controls.Add(this.buttonthem);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxghedadat);
             this.Controls.Add(this.textBoxtenkhach);
-            this.Controls.Add(this.dataGridViewkhachhang);
             this.Name = "Form2";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewkhachhang)).EndInit();
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewkhachhang;
         private System.Windows.Forms.TextBox textBoxtenkhach;
-        private System.Windows.Forms.TextBox textBoxghedadat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonthem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        public System.Windows.Forms.TextBox textBoxghedadat;
+        public System.Windows.Forms.TextBox textBoxthanhtien;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -41,6 +41,8 @@
             this.buttonclean = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxthanhtien = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonexit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -66,7 +68,6 @@
             this.buttonrvt.Size = new System.Drawing.Size(40, 40);
             this.buttonrvt.TabIndex = 2;
             this.buttonrvt.UseVisualStyleBackColor = true;
-            //this.buttonrvt.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label1
             // 
@@ -152,6 +153,7 @@
             // 
             // buttonthanhtoan
             // 
+            this.buttonthanhtoan.Enabled = false;
             this.buttonthanhtoan.Location = new System.Drawing.Point(729, 729);
             this.buttonthanhtoan.Name = "buttonthanhtoan";
             this.buttonthanhtoan.Size = new System.Drawing.Size(152, 44);
@@ -168,6 +170,7 @@
             this.buttonclean.TabIndex = 11;
             this.buttonclean.Text = "Clean";
             this.buttonclean.UseVisualStyleBackColor = true;
+            this.buttonclean.Click += new System.EventHandler(this.buttonclean_Click);
             // 
             // label5
             // 
@@ -192,6 +195,31 @@
             this.textBoxthanhtien.TabIndex = 13;
             this.textBoxthanhtien.Text = "0";
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ShortcutsEnabled = false;
+            this.textBox1.Size = new System.Drawing.Size(1222, 41);
+            this.textBox1.TabIndex = 15;
+            this.textBox1.Text = "DANH SÁCH GHẾ NGỒI";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonexit
+            // 
+            this.buttonexit.Location = new System.Drawing.Point(1103, 729);
+            this.buttonexit.Name = "buttonexit";
+            this.buttonexit.Size = new System.Drawing.Size(98, 44);
+            this.buttonexit.TabIndex = 16;
+            this.buttonexit.Text = "Thoát";
+            this.buttonexit.UseVisualStyleBackColor = true;
+            this.buttonexit.Click += new System.EventHandler(this.buttonexit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -199,6 +227,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1222, 789);
+            this.Controls.Add(this.buttonexit);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBoxthanhtien);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonclean);
@@ -235,6 +265,8 @@
         private System.Windows.Forms.Button buttonclean;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxthanhtien;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonexit;
     }
 }
 
